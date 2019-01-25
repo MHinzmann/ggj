@@ -1,12 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Holzscheit : MonoBehaviour, Collectable
+[RequireComponent(typeof(Rigidbody))]
+public class Holzscheit : MonoBehaviour, ICollectable
 {
+    private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     public void OnCollect()
     {
         Destroy(gameObject);
     }
-    
+
+    public Rigidbody GetRigidbody()
+    {
+        return _rigidbody;
+    }
 }
