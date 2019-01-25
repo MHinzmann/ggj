@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class FollowCamera : MonoBehaviour
 {
+    public float speed = 4;
     public GameObject target;
 
     private Vector3 _initialPosition;
@@ -18,7 +19,7 @@ public class Camera : MonoBehaviour
 
     private void FollowTarget()
     {
-        float interpolation = 2f * Time.deltaTime;
+        float interpolation = speed * Time.deltaTime;
 
         var targetPosition = target.transform.position;
         var currentFocusPosition = transform.position - _initialPosition;
