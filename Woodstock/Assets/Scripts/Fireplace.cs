@@ -24,7 +24,7 @@ public class Fireplace : MonoBehaviour
     public float _remainingTime;
 
     public GameObject fire;
-
+    
     private FireState fireState;
 
     private void Awake()

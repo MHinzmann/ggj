@@ -1,17 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Inventory))]
 public class FireFeeder : MonoBehaviour
 {
-    private Inventory _inventory;
+    public Inventory _inventory;
 
-    private void Start()
-    {
-        _inventory = GetComponent<Inventory>();
-    }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Fireplace"))
         {
