@@ -19,16 +19,15 @@ public class Fireplace : MonoBehaviour
     public float thresholdNormalFlame = 60;
     public float thresholdSmallFlame = 30;
 
+    public float _remainingTime;
+
     public GameObject fire;
     
-    public float _remainingTime;
     private FireState fireState;
 
-    private MeshRenderer _renderer;
     private void Awake()
     {
         _remainingTime = initialTimeLeft;
-        _renderer = GetComponent<MeshRenderer>();
         UpdateFireState();
     }
 
@@ -46,31 +45,43 @@ public class Fireplace : MonoBehaviour
 
     private void UpdateFireState()
     {
-        if (fireState != FireState.Out && _remainingTime <= 0)
+        if (_remainingTime <= 0)
         {
+            if (fireState == FireState.Out) return;
+            Debug.Log("Flame is out");
+
             fireState = FireState.Out;
+
             Destroy(fire);
-            // remove fire
-            // remove Light
+
             onFireBurntOut.Invoke();
         }
-        else if (fireState != FireState.Small && _remainingTime <= thresholdSmallFlame)
+        else if (_remainingTime <= thresholdSmallFlame)
         {
+            if (fireState == FireState.Small) return;
+            Debug.Log("Flame is small");
+
             fireState = FireState.Small;
-            // switch texture to small flame instead
+            fire.transform.localScale = new Vector3(0.33f, 0.33f, 1);
+            // set Light
+        }
+        else if (_remainingTime <= thresholdNormalFlame)
+        {
+            if (fireState == FireState.Medium) return;
             
-            // set Light
-        }
-        else if (fireState != FireState.Medium && _remainingTime <= thresholdNormalFlame)
-        {
+            Debug.Log("Flame is medium");
+            
             fireState = FireState.Medium;
-            // switch texture to normal flame
+            fire.transform.localScale = new Vector3(0.66f, 0.66f, 1);
             // set Light
         }
-        else if (fireState != FireState.Big && _remainingTime > thresholdNormalFlame)
+        else if (_remainingTime > thresholdNormalFlame)
         {
+            if (fireState == FireState.Big) return;
+            Debug.Log("Flame is big");
+
             fireState = FireState.Big;
-            // switch texture to normal flame
+            fire.transform.localScale = new Vector3(1, 1, 1);
             // set Light
         }
     }
