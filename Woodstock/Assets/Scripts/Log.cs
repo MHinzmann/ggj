@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AudioSource))]
 public class Log : MonoBehaviour, ICollectable, IFuel
 {
     private Rigidbody _rigidbody;
@@ -12,7 +13,6 @@ public class Log : MonoBehaviour, ICollectable, IFuel
 
     public void OnCollect()
     {
-        // play sound or something
         gameObject.SetActive(false);
     }
 

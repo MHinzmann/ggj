@@ -8,6 +8,8 @@ public class Collector : MonoBehaviour
     
     public float suckSpeed = 1;
     public float collectionRange = 0.5f;
+
+    public AudioSource collectionSound;
     
     private SphereCollider _sphereCollider;
     private List<ICollectable> _collectablesInSuckRange;
@@ -57,6 +59,7 @@ public class Collector : MonoBehaviour
             _collectablesInSuckRange.Remove(collectable);
             collectable.OnCollect();
             inventory.Store(collectable);
+            collectionSound.Play();
         }
     }
 

@@ -11,7 +11,7 @@ public class FireFeeder : MonoBehaviour
         _inventory = GetComponent<Inventory>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Fireplace"))
         {

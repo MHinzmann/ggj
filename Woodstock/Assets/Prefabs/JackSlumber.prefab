@@ -246,7 +246,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   speed: 3
-  stepLength: 2
+  stepLength: 0.25
   stepHeight: 0.1
 --- !u!114 &1606698155065710109
 MonoBehaviour:
