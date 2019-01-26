@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1859758639435039284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 3457071541808844348}
   - {fileID: 4803537819321433763}
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feedValue: 100
-  _remainingTime: 0
 --- !u!135 &8853498470324988982
 SphereCollider:
   m_ObjectHideFlags: 0

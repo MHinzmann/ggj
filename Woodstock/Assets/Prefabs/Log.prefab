@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118163628559738700}
   - component: {fileID: 426147230944801917}
+  - component: {fileID: 2579499323208882121}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -79,6 +80,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2579499323208882121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860694549559517997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5c2c0894544487ad4a0ff9c79533fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4081753892708675203
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +105,7 @@ GameObject:
   - component: {fileID: 8974127079641823400}
   - component: {fileID: 2602580212328049283}
   m_Layer: 0
-  m_Name: Holzscheit
+  m_Name: Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
