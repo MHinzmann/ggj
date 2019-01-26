@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float stepLength = 0.5f;
     public float stepHeight = 0.1f;
 
+    public GameObject lamp;
+
     private Rigidbody _rigidbody;
     private MeshRenderer _renderer;
 
@@ -41,13 +43,20 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+
+
         if (horizontal > 0)
         {
-            _renderer.material.SetTextureScale("_MainTex", new Vector2(1, 1));
+          transform.localScale = new Vector3(1,transform.localScale.y,transform.localScale.z);
+          lamp.transform.localScale =  new Vector3(Mathf.Abs(lamp.transform.localScale.x),lamp.transform.localScale.y,lamp.transform.localScale.z); //_renderer.material.SetTextureScale("_MainTex", new Vector2(1, 1));
         }
         else if (horizontal < 0)
         {
-            _renderer.material.SetTextureScale("_MainTex", new Vector2(-1, 1));
+          transform.localScale = new Vector3(-1,transform.localScale.y,transform.localScale.z);
+          lamp.transform.localScale =  new Vector3(-Mathf.Abs(lamp.transform.localScale.x),lamp.transform.localScale.y,lamp.transform.localScale.z);
+            //_renderer.material.SetTextureScale("_MainTex", new Vector2(-1, 1));
         }
+
+
     }
 }
