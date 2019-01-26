@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Fireplace : MonoBehaviour
 {
     public UnityEvent onFireFed = new UnityEvent();
-    
+
     private enum FireState
     {
         Out,
@@ -37,6 +36,9 @@ public class Fireplace : MonoBehaviour
 
     public void Feed(IFuel fuel)
     {
+        if (fireState == FireState.Out)
+            return;
+
         _remainingTime += timePerFuelValue * fuel.GetFuelValue();
         onFireFed.Invoke();
     }
@@ -59,7 +61,7 @@ public class Fireplace : MonoBehaviour
 
             Destroy(fire);
             light.intensity = 0;
-            
+
             onFireBurntOut.Invoke();
         }
         else if (_remainingTime <= thresholdSmallFlame)

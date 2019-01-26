@@ -7,6 +7,11 @@ public class MapGenerator : MonoBehaviour
 
     public int treeDistance = 8;
 
+    public int logDistance = 16;
+    
+    [Tooltip("Chance, dass ein Holzscheit spawnt in %")]
+    public int logSpawnChance = 50;
+
     public GameObject[] treePrefabs;
     public GameObject logPrefab;
 
@@ -18,17 +23,17 @@ public class MapGenerator : MonoBehaviour
 
     private void SpawnTrees()
     {
-      int treeCount = 0;
-        for (int i = -5; i < 6; i++)
+        int treeCount = 0;
+        for (int i = -50; i < 50; i++)
         {
-            for (int j = -5; j < 6; j++)
+            for (int j = -50; j < 50; j++)
             {
                 var x = Random.Range(i * treeDistance, i * treeDistance + treeDistance);
                 var z = Random.Range(j * treeDistance, j * treeDistance + treeDistance);
                 if (IsInClearRadius(new Vector2(x, z))) continue;
 
 
-                var tree = Instantiate(treePrefabs[treeCount%treePrefabs.Length], transform);
+                var tree = Instantiate(treePrefabs[treeCount % treePrefabs.Length], transform);
                 tree.transform.position = new Vector3(x, 0, z);
                 treeCount++;
             }
@@ -37,17 +42,17 @@ public class MapGenerator : MonoBehaviour
 
     private void SpawnLogs()
     {
-        int logDistance = 16;
-        for (int i = -2; i < 3; i++)
+        int logDistance = this.logDistance;
+        for (int i = -50; i < 50; i++)
         {
-            for (int j = -2; j < 3; j++)
+            for (int j = -50; j < 50; j++)
             {
                 var x = Random.Range(i * logDistance, i * logDistance + logDistance);
                 var z = Random.Range(j * logDistance, j * logDistance + logDistance);
 
                 if (IsInClearRadius(new Vector2(x, z))) continue;
 
-                if (Random.Range(0, 2) != 1) continue;
+                if (Random.Range(0, (int) (100 / logSpawnChance)) != 1) continue;
 
                 var log = Instantiate(logPrefab, transform);
                 log.transform.position = new Vector3(x, 0, z);

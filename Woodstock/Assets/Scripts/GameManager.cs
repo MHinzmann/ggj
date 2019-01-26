@@ -7,12 +7,16 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("The distance to the player in that the house won't disappear when the fire burns out")]
     public int disappearDistance = 16;
+
     public int scorePerTime = 13;
     public int scoreEvery = 3;
 
     public GameObject house;
     public GameObject character;
 
+    public AudioSource gameOverSound;
+
+    private bool _playerCaught;
     private float lastScoreTime = 0;
 
     public void FireBurntOut()
@@ -24,9 +28,18 @@ public class GameManager : MonoBehaviour
         // SceneManager.LoadScene("End");
     }
 
+    private void Update()
+    {
+        if (_playerCaught && !gameOverSound.isPlaying)
+        {
+            SceneManager.LoadScene("End");
+        }
+    }
+
     public void OnPlayerCaughtByGhost()
     {
-        SceneManager.LoadScene("End");
+        _playerCaught = true;
+        gameOverSound.Play();
     }
 
     private bool HouseOutOfSight()
