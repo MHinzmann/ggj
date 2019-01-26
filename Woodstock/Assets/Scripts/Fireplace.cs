@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class Fireplace : MonoBehaviour
 {
+    public UnityEvent onFireFed = new UnityEvent();
+    
     private enum FireState
     {
         Out,
@@ -22,7 +24,7 @@ public class Fireplace : MonoBehaviour
     public float _remainingTime;
 
     public GameObject fire;
-    
+
     private FireState fireState;
 
     private void Awake()
@@ -34,6 +36,7 @@ public class Fireplace : MonoBehaviour
     public void Feed(IFuel fuel)
     {
         _remainingTime += timePerFuelValue * fuel.GetFuelValue();
+        onFireFed.Invoke();
     }
 
     private void Update()
@@ -59,30 +62,50 @@ public class Fireplace : MonoBehaviour
         else if (_remainingTime <= thresholdSmallFlame)
         {
             if (fireState == FireState.Small) return;
-            Debug.Log("Flame is small");
-
-            fireState = FireState.Small;
-            fire.transform.localScale = new Vector3(0.33f, 0.33f, 1);
-            // set Light
+            SwitchToSmallFlame();
         }
         else if (_remainingTime <= thresholdNormalFlame)
         {
             if (fireState == FireState.Medium) return;
-            
-            Debug.Log("Flame is medium");
-            
-            fireState = FireState.Medium;
-            fire.transform.localScale = new Vector3(0.66f, 0.66f, 1);
-            // set Light
+            SwitchToMediumFlame();
         }
         else if (_remainingTime > thresholdNormalFlame)
         {
             if (fireState == FireState.Big) return;
-            Debug.Log("Flame is big");
-
-            fireState = FireState.Big;
-            fire.transform.localScale = new Vector3(1, 1, 1);
-            // set Light
+            SwitchToBigFlame();
         }
+    }
+
+    private void SwitchToBigFlame()
+    {
+        Debug.Log("Flame is big");
+
+        fireState = FireState.Big;
+        fire.transform.localScale = new Vector3(1, 1, 1);
+        fire.GetComponent<AudioSource>().volume = 1f;
+
+        // set Light
+    }
+
+    private void SwitchToMediumFlame()
+    {
+        Debug.Log("Flame is medium");
+
+        fireState = FireState.Medium;
+        fire.transform.localScale = new Vector3(0.66f, 0.66f, 1);
+        fire.GetComponent<AudioSource>().volume = 0.66f;
+
+        // set Light
+    }
+
+    private void SwitchToSmallFlame()
+    {
+        Debug.Log("Flame is small");
+
+        fireState = FireState.Small;
+        fire.transform.localScale = new Vector3(0.33f, 0.33f, 1);
+        fire.GetComponent<AudioSource>().volume = 0.33f;
+
+        // set Light
     }
 }
