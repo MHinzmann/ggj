@@ -240,7 +240,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655300cb82be7d74a81d6a0c6ab0ec30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStepTaken:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   speed: 3
+  stepLength: 2
+  stepHeight: 0.1
 --- !u!114 &1606698155065710109
 MonoBehaviour:
   m_ObjectHideFlags: 0
