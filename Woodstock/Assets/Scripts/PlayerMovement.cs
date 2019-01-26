@@ -1,11 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public UnityEvent onStepTaken = new UnityEvent();
+
     public float speed = 10;
+    public float stepLength = 0.5f;
+    public float stepHeight = 0.1f;
 
     private Rigidbody _rigidbody;
     private MeshRenderer _renderer;
+
+    private float stepProgress;
 
     private void Awake()
     {
@@ -13,11 +21,25 @@ public class PlayerMovement : MonoBehaviour
         _renderer = GetComponentInChildren<MeshRenderer>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
         _rigidbody.velocity = new Vector3(speed * horizontal, 0, speed * vertical);
+
+        var moveDistance = _rigidbody.velocity.magnitude;
+        stepProgress += moveDistance * Time.deltaTime;
+        var y = Mathf.Lerp(0, stepHeight, stepProgress / stepLength);
+        transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        if (stepProgress > 0)
+        {
+            if (Math.Abs(moveDistance) < 0.01f || stepProgress >= stepLength)
+            {
+                stepProgress = 0;
+                transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+                onStepTaken.Invoke();
+            }
+        }
 
         if (horizontal > 0)
         {
