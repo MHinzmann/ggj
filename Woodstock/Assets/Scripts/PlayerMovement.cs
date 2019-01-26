@@ -17,14 +17,26 @@ public class PlayerMovement : MonoBehaviour
 
     private float stepProgress;
 
+    private bool immobilized;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _renderer = GetComponentInChildren<MeshRenderer>();
     }
 
+    public void Immobilize()
+    {
+        immobilized = true;
+    }
+
     void FixedUpdate()
     {
+        if (immobilized)
+        {
+            return;
+        }
+
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
         _rigidbody.velocity = new Vector3(speed * horizontal, 0, speed * vertical);
@@ -44,19 +56,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-
         if (horizontal > 0)
         {
-          transform.localScale = new Vector3(1,transform.localScale.y,transform.localScale.z);
-          lamp.transform.localScale =  new Vector3(Mathf.Abs(lamp.transform.localScale.x),lamp.transform.localScale.y,lamp.transform.localScale.z); //_renderer.material.SetTextureScale("_MainTex", new Vector2(1, 1));
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            lamp.transform.localScale = new Vector3(Mathf.Abs(lamp.transform.localScale.x), lamp.transform.localScale.y,
+                lamp.transform.localScale.z); //_renderer.material.SetTextureScale("_MainTex", new Vector2(1, 1));
         }
         else if (horizontal < 0)
         {
-          transform.localScale = new Vector3(-1,transform.localScale.y,transform.localScale.z);
-          lamp.transform.localScale =  new Vector3(-Mathf.Abs(lamp.transform.localScale.x),lamp.transform.localScale.y,lamp.transform.localScale.z);
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            lamp.transform.localScale = new Vector3(-Mathf.Abs(lamp.transform.localScale.x),
+                lamp.transform.localScale.y, lamp.transform.localScale.z);
             //_renderer.material.SetTextureScale("_MainTex", new Vector2(-1, 1));
         }
-
-
     }
 }

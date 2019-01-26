@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
         {
             house.SetActive(false);
         }
-        // SceneManager.LoadScene("End");
     }
 
     private void Update()
@@ -38,6 +37,10 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerCaughtByGhost()
     {
+        if (_playerCaught)
+            return;
+        
+        character.GetComponent<PlayerMovement>().Immobilize();
         _playerCaught = true;
         gameOverSound.Play();
     }
@@ -48,16 +51,19 @@ public class GameManager : MonoBehaviour
         return distanceToHouse > disappearDistance;
     }
 
-    public void FixedUpdate() {
-      Debug.Log(score);
-      //check for required score addition
-      if(Time.fixedTime - lastScoreTime >= scoreEvery) {
-        lastScoreTime = Time.fixedTime;
-        AddScore(scorePerTime);
-      }
+    public void FixedUpdate()
+    {
+        Debug.Log(score);
+        //check for required score addition
+        if (Time.fixedTime - lastScoreTime >= scoreEvery)
+        {
+            lastScoreTime = Time.fixedTime;
+            AddScore(scorePerTime);
+        }
     }
 
-    public void AddScore(int s) {
-      score+=s;
+    public void AddScore(int s)
+    {
+        score += s;
     }
 }

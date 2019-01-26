@@ -629,6 +629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearRadius: 5
   treeDistance: 4
+  logDistance: 16
+  logSpawnChance: 50
   treePrefabs:
   - {fileID: 6685411220225741333, guid: 97235e5c4147376498bfe46406618817, type: 3}
   - {fileID: 7657820546061674494, guid: 470f3c5595ace449e903ee52e7d0b3a9, type: 3}
@@ -792,6 +794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disappearDistance: 16
+  scorePerTime: 13
+  scoreEvery: 3
   house: {fileID: 1096721814}
   character: {fileID: 1624003811}
   gameOverSound: {fileID: 964420607}
@@ -819,7 +823,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 45f2cfda66833924281ea24989156e35, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
