@@ -5,7 +5,8 @@
 public class Log : MonoBehaviour, ICollectable, IFuel
 {
     private Rigidbody _rigidbody;
-
+    int score = 7;
+    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -13,6 +14,7 @@ public class Log : MonoBehaviour, ICollectable, IFuel
 
     public void OnCollect()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>.AddScore(score);
         gameObject.SetActive(false);
     }
 
