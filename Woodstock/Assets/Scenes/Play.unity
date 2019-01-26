@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearRadius: 8
-  treeDistance: 8
+  treeDistance: 2
   treePrefab: {fileID: 6685411220225741333, guid: 97235e5c4147376498bfe46406618817,
     type: 3}
   logPrefab: {fileID: 4081753892708675203, guid: 685d23ea2ae6d234c8e7fb132872e1de,
