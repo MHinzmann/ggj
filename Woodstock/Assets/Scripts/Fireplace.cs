@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class Fireplace : MonoBehaviour
@@ -24,7 +25,8 @@ public class Fireplace : MonoBehaviour
     public float _remainingTime;
 
     public GameObject fire;
-    
+
+    public Light light;
     private FireState fireState;
 
     private void Awake()
@@ -56,7 +58,8 @@ public class Fireplace : MonoBehaviour
             fireState = FireState.Out;
 
             Destroy(fire);
-
+            light.intensity = 0;
+            
             onFireBurntOut.Invoke();
         }
         else if (_remainingTime <= thresholdSmallFlame)
@@ -81,10 +84,10 @@ public class Fireplace : MonoBehaviour
         Debug.Log("Flame is big");
 
         fireState = FireState.Big;
-        fire.transform.localScale = new Vector3(1, 1, 1);
+        fire.transform.localScale = new Vector3(0.7f, 1.5f, 1);
         fire.GetComponent<AudioSource>().volume = 1f;
 
-        // set Light
+        light.intensity = 1;
     }
 
     private void SwitchToMediumFlame()
@@ -92,10 +95,10 @@ public class Fireplace : MonoBehaviour
         Debug.Log("Flame is medium");
 
         fireState = FireState.Medium;
-        fire.transform.localScale = new Vector3(0.66f, 0.66f, 1);
+        fire.transform.localScale = new Vector3(0.7f, 1, 1);
         fire.GetComponent<AudioSource>().volume = 0.66f;
 
-        // set Light
+        light.intensity = 0.66f;
     }
 
     private void SwitchToSmallFlame()
@@ -103,9 +106,9 @@ public class Fireplace : MonoBehaviour
         Debug.Log("Flame is small");
 
         fireState = FireState.Small;
-        fire.transform.localScale = new Vector3(0.33f, 0.33f, 1);
+        fire.transform.localScale = new Vector3(0.66f, 0.66f, 1);
         fire.GetComponent<AudioSource>().volume = 0.33f;
 
-        // set Light
+        light.intensity = 0.33f;
     }
 }
