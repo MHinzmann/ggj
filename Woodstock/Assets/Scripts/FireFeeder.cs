@@ -4,7 +4,7 @@ using UnityEngine;
 public class FireFeeder : MonoBehaviour
 {
     public Inventory inventory;
-
+    public int firePlaceScore = 50;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Fireplace"))
@@ -21,6 +21,8 @@ public class FireFeeder : MonoBehaviour
             if (collectable is IFuel)
             {
                 fireplace.Feed((IFuel) collectable);
+                //addScore
+                GameObject.Find("GameManager").GetComponent<GameManager>().AddScore(firePlaceScore);
                 inventory.Remove(collectable);
             }
         }
