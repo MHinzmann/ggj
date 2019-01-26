@@ -15,10 +15,13 @@ public class GameManager : MonoBehaviour
         {
             house.SetActive(false);
         }
-
-        // SceneManager.LoadScene("End");
     }
 
+    public void OnPlayerCaughtByGhost()
+    {
+        SceneManager.LoadScene("End");
+    }
+    
     private bool HouseOutOfSight()
     {
         var distanceToHouse = (house.transform.position - character.transform.position).magnitude;
