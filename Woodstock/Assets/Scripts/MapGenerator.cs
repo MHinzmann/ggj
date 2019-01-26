@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    [Tooltip("Radius um 0/0 herum, in dem nichts generiert wird")]
+    public float clearRadius = 8;
+
     public int treeDistance = 8;
 
     public GameObject treePrefab;
@@ -21,11 +22,12 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = -5; j < 6; j++)
             {
-                GameObject tree = Instantiate(treePrefab, transform);
                 var x = Random.Range(i * treeDistance, i * treeDistance + treeDistance);
                 var z = Random.Range(j * treeDistance, j * treeDistance + treeDistance);
-                var halfHeight = tree.GetComponentInChildren<SpriteRenderer>().bounds.extents.y;
-                tree.transform.position = new Vector3(x, halfHeight, z);
+                if (IsInClearRadius(new Vector2(x, z))) continue;
+
+                var tree = Instantiate(treePrefab, transform);
+                tree.transform.position = new Vector3(x, 0, z);
             }
         }
     }
@@ -37,16 +39,21 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = -2; j < 3; j++)
             {
-                GameObject log = Instantiate(logPrefab, transform);
-
-                if (Random.Range(0, 2) == 1)
-                {
-                    var x = Random.Range(i * logDistance, i * logDistance + logDistance);
-                    var z = Random.Range(j * logDistance, j * logDistance + logDistance);
-                    var halfHeight = log.GetComponentInChildren<SpriteRenderer>().bounds.extents.y;
-                    log.transform.position = new Vector3(x, halfHeight, z);
-                }
+                var x = Random.Range(i * logDistance, i * logDistance + logDistance);
+                var z = Random.Range(j * logDistance, j * logDistance + logDistance);
+                
+                if (IsInClearRadius(new Vector2(x, z))) continue;
+                
+                if (Random.Range(0, 2) != 1) continue;
+                
+                var log = Instantiate(logPrefab, transform);
+                log.transform.position = new Vector3(x, 0, z);
             }
         }
+    }
+
+    private bool IsInClearRadius(Vector2 pos)
+    {
+        return pos.sqrMagnitude <= clearRadius * clearRadius;
     }
 }

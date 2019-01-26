@@ -13,7 +13,7 @@ public class Log : MonoBehaviour, ICollectable, IFuel
     public void OnCollect()
     {
         // play sound or something
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public Rigidbody GetRigidbody()
