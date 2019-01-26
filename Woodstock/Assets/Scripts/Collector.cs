@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Collector : MonoBehaviour
 {
+    [System.Serializable]
+    public class OnCollect : UnityEvent<ICollectable>
+    {
+ 
+    }
+    
     public float suckSpeed = 1;
     public float collectionRange = 0.5f;
-
+    public OnCollect onCollect = new OnCollect();
+    
     private SphereCollider _sphereCollider;
     private List<ICollectable> _collectablesInSuckRange;
 
@@ -52,6 +60,7 @@ public class Collector : MonoBehaviour
         if (distance.magnitude <= collectionRange)
         {
             _collectablesInSuckRange.Remove(collectable);
+            onCollect.Invoke(collectable);
             collectable.OnCollect();
         }
     }

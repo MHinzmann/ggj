@@ -12,6 +12,7 @@ public class Holzscheit : MonoBehaviour, ICollectable
 
     public void OnCollect()
     {
+        // play sound or something
         Destroy(gameObject);
     }
 
