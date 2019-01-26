@@ -15,6 +15,7 @@ public class Ghost : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindWithTag("Player");
+        Debug.Log(target);
         _rigidbody = GetComponent<Rigidbody>();
     }
 

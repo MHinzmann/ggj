@@ -21,9 +21,17 @@ public class GameManager : MonoBehaviour
         {
             house.SetActive(false);
         }
+<<<<<<< HEAD
         // SceneManager.LoadScene("End");
+=======
+>>>>>>> 4d00263c73c050f0b107a488a4cb33cfa3059774
     }
 
+    public void OnPlayerCaughtByGhost()
+    {
+        SceneManager.LoadScene("End");
+    }
+    
     private bool HouseOutOfSight()
     {
         var distanceToHouse = (house.transform.position - character.transform.position).magnitude;
