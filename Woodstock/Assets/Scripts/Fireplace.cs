@@ -2,9 +2,15 @@
 
 public class Fireplace : MonoBehaviour
 {
+    public float initialTimeLeft;
     public float feedValue;
 
     private float _remainingTime;
+
+    private void Awake()
+    {
+        _remainingTime = initialTimeLeft;
+    }
 
     public void Feed(IFuel fuel)
     {

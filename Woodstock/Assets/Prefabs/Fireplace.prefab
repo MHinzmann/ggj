@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61e121602677314fa668a7cfe4e0506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialTimeLeft: 0
   feedValue: 100
 --- !u!135 &8853498470324988982
 SphereCollider:
@@ -208,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4525908528340668448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.33, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1167, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 563564984963313304}

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -24,8 +22,7 @@ public class MapGenerator : MonoBehaviour
                 GameObject tree = Instantiate(treePrefab, transform);
                 var x = Random.Range(i * treeDistance, i * treeDistance + treeDistance);
                 var z = Random.Range(j * treeDistance, j * treeDistance + treeDistance);
-                var halfHeight = tree.GetComponentInChildren<SpriteRenderer>().bounds.extents.y;
-                tree.transform.position = new Vector3(x, halfHeight, z);
+                tree.transform.position = new Vector3(x, 0, z);
             }
         }
     }
@@ -43,8 +40,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     var x = Random.Range(i * logDistance, i * logDistance + logDistance);
                     var z = Random.Range(j * logDistance, j * logDistance + logDistance);
-                    var halfHeight = log.GetComponentInChildren<SpriteRenderer>().bounds.extents.y;
-                    log.transform.position = new Vector3(x, halfHeight, z);
+                    log.transform.position = new Vector3(x, 0, z);
                 }
             }
         }
