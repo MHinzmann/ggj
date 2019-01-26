@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FireFeeder : MonoBehaviour
 {
-    public Inventory _inventory;
+    public Inventory inventory;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,12 +16,12 @@ public class FireFeeder : MonoBehaviour
 
     private void FeedFireplace(Fireplace fireplace)
     {
-        foreach (var collectable in new List<ICollectable>(_inventory.GetCollectables()))
+        foreach (var collectable in new List<ICollectable>(inventory.GetCollectables()))
         {
             if (collectable is IFuel)
             {
                 fireplace.Feed((IFuel) collectable);
-                _inventory.Remove(collectable);
+                inventory.Remove(collectable);
             }
         }
     }
