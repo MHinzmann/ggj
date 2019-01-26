@@ -2,14 +2,14 @@
 
 public class MapGenerator : MonoBehaviour
 {
-    [Tooltip("Radius um 0/0 herum, in dem nichts generiert wird")]
+    [Tooltip("Radius around 0/0, in that nothing gets generated")]
     public float clearRadius = 8;
 
     public int treeDistance = 8;
 
     public int logDistance = 16;
     
-    [Tooltip("Chance, dass ein Holzscheit spawnt in %")]
+    [Tooltip("Chance that a log spawns in %")]
     public int logSpawnChance = 50;
 
     public GameObject[] treePrefabs;
@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
 
                 if (IsInClearRadius(new Vector2(x, z))) continue;
 
-                if (Random.Range(0, (int) (100 / logSpawnChance)) != 1) continue;
+                if (Random.Range(0, 100 / logSpawnChance) != 1) continue;
 
                 var log = Instantiate(logPrefab, transform);
                 log.transform.position = new Vector3(x, 0, z);
