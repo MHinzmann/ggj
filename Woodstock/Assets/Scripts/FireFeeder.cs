@@ -22,7 +22,7 @@ public class FireFeeder : MonoBehaviour
             {
                 fireplace.Feed((IFuel) collectable);
                 //addScore
-                GameObject.Find("GameManager").GetComponent<GameManager>.AddScore(firePlaceScore);
+                GameObject.Find("GameManager").GetComponent<GameManager>().AddScore(firePlaceScore);
                 inventory.Remove(collectable);
             }
         }
