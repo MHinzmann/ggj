@@ -44,24 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb934b5b7a65e44fbf420fe8595efab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 1606698155065710109}
   suckSpeed: 5
   collectionRange: 0.5
-  onCollect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1606698155065710109}
-        m_MethodName: Store
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-    m_TypeName: Collector+OnCollect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!135 &424706600624992645
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -145,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4824007023310954884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8117643548368527988}
@@ -160,10 +145,10 @@ Light:
   m_GameObject: {fileID: 4824007023310954884}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 10
+  m_Type: 2
+  m_Color: {r: 0.6698113, g: 0.5803574, b: 0.18009077, a: 1}
+  m_Intensity: 0.5
+  m_Range: 20
   m_SpotAngle: 31.4
   m_CookieSize: 10
   m_Shadows:
@@ -268,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a57332668739b489c5c92f49b51b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: 0
 --- !u!114 &9033317506052506101
 MonoBehaviour:
   m_ObjectHideFlags: 0

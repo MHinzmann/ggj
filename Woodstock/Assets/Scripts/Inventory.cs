@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
 
+    public int items;
     private List<ICollectable> _storedCollectables;
 
     private void Awake()
@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     public void Store(ICollectable collectable)
     {
         _storedCollectables.Add(collectable);
+        items++;
     }
 
     public List<ICollectable> GetCollectables()
@@ -25,10 +26,12 @@ public class Inventory : MonoBehaviour
     public void Clear()
     {
         _storedCollectables.Clear();
+        items = 0;
     }
 
     public void Remove(ICollectable collectable)
     {
         _storedCollectables.Remove(collectable);
+        items--;
     }
 }
