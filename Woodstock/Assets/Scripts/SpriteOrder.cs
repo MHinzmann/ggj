@@ -7,7 +7,6 @@ public class SpriteOrder : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-
         GameObject pivot = new GameObject();
         pivot.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         pivot.transform.SetParent(transform.parent);
@@ -17,6 +16,6 @@ public class SpriteOrder : MonoBehaviour
 
     void LateUpdate()
     {
-        _spriteRenderer.sortingOrder = (int) Camera.main.WorldToScreenPoint(_spriteRenderer.bounds.min).y * -1;
+        _spriteRenderer.sortingOrder = (int) (_spriteRenderer.bounds.min.z * -100f);
     }
 }

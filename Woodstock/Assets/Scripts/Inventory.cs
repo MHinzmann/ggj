@@ -16,5 +16,19 @@ public class Inventory : MonoBehaviour
     {
         _storedCollectables.Add(collectable);
     }
-    
+
+    public List<ICollectable> GetCollectables()
+    {
+        return _storedCollectables;
+    }
+
+    public void Clear()
+    {
+        _storedCollectables.Clear();
+    }
+
+    public void Remove(ICollectable collectable)
+    {
+        _storedCollectables.Remove(collectable);
+    }
 }

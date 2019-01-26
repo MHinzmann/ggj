@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Holzscheit : MonoBehaviour, ICollectable
+public class Log : MonoBehaviour, ICollectable, IFuel
 {
     private Rigidbody _rigidbody;
 
@@ -19,5 +19,10 @@ public class Holzscheit : MonoBehaviour, ICollectable
     public Rigidbody GetRigidbody()
     {
         return _rigidbody;
+    }
+
+    public int GetFuelValue()
+    {
+        return 3;
     }
 }
