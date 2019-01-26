@@ -28,12 +28,8 @@
 * Mond als Schwierigkeitsgrad
  
 ## Sounds
-* einsammeln Holz
-* reisig aufheben
-  * Pappkarton deckel öffnen/ schließen
 * mull einsammeln
   * Papier zusammenknüllen 
-* Beutel voll sound
 * Baumstamm abholzen
   * zwei Huafen aufeinander
 * Säge
@@ -69,12 +65,15 @@
 * düstere Stimmung
   * weiches papier auf einander reibend
 * Schnee sound
+* reisig aufheben
+  * Pappkarton deckel öffnen/ schließen
 * wind
   * pusten in papier
 * sturm 
 * baum rascheln
 * Feuer erloschen
-
+* einsammeln Holz
+* Beutel voll sound
 ## HUD
 ###Startscreen
  * Starten
