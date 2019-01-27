@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Debug.Log(score);
         //check for required score addition
         if (Time.fixedTime - lastScoreTime >= scoreEvery)
         {

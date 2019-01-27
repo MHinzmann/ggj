@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (immobilized)
         {
+            _rigidbody.velocity = Vector3.zero;
             return;
         }
 

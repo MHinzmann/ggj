@@ -7,11 +7,8 @@ public class MapGenerator : MonoBehaviour
 
     public int treeDistance = 8;
 
-    public int logDistance = 16;
+    public int logDistance = 8;
     
-    [Tooltip("Chance that a log spawns in %")]
-    public int logSpawnChance = 50;
-
     public GameObject[] treePrefabs;
     public GameObject logPrefab;
 
@@ -42,7 +39,6 @@ public class MapGenerator : MonoBehaviour
 
     private void SpawnLogs()
     {
-        int logDistance = this.logDistance;
         for (int i = -50; i < 50; i++)
         {
             for (int j = -50; j < 50; j++)
@@ -51,8 +47,6 @@ public class MapGenerator : MonoBehaviour
                 var z = Random.Range(j * logDistance, j * logDistance + logDistance);
 
                 if (IsInClearRadius(new Vector2(x, z))) continue;
-
-                if (Random.Range(0, 100 / logSpawnChance) != 1) continue;
 
                 var log = Instantiate(logPrefab, transform);
                 log.transform.position = new Vector3(x, 0, z);

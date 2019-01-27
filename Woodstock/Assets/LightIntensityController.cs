@@ -7,19 +7,26 @@ public class LightIntensityController : MonoBehaviour
     private Light light;
     private float initIntensity;
     private float strengthPercent = 100f;
-    // Start is called before the first frame update
+
+    private Fireplace _fireplace;
+
     void Start()
     {
         light = GetComponentInChildren<Light>();
         initIntensity = light.intensity;
+
+        GameObject fireplace = GameObject.Find("Fireplace");
+        fireplace.GetComponent<Fireplace>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GameObject fireplace = GameObject.Find("Fireplace");
-        strengthPercent = 100 / fireplace.GetComponent<Fireplace>().initialTimeLeft * fireplace.GetComponent<Fireplace>()._remainingTime;
-        Debug.Log(strengthPercent);
+        if (_fireplace == null)
+        {
+            return;
+        }
+
+        strengthPercent = 100 / _fireplace.initialTimeLeft * _fireplace._remainingTime;
         float newIntensity = initIntensity / 100 * strengthPercent;
         light.intensity = newIntensity;
     }
