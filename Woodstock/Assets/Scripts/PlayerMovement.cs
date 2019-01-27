@@ -44,7 +44,13 @@ public class PlayerMovement : MonoBehaviour
 
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        var direction = new Vector3(horizontal, 0, vertical).normalized;
+        var direction = new Vector3(horizontal, 0, vertical);
+
+        if (direction.magnitude > 1)
+        {
+            direction = direction.normalized;
+        }
+
         _rigidbody.velocity = direction * speed;
 
         var moveDistance = _rigidbody.velocity.magnitude;
@@ -60,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
                 onStepTaken.Invoke();
             }
         }
+
         if (horizontal > 0)
         {
             lookingLeft = false;
@@ -77,25 +84,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void PlaceSteps() {
-      Vector3 pos;
-      GameObject print;
+    void PlaceSteps()
+    {
+        Vector3 pos;
+        GameObject print;
         steps++;
-        if(steps%2 == 0) {
-          pos = new Vector3(transform.position.x,0.01f,transform.position.z-0.05f);
-          print = Instantiate(footprint_l,pos,transform.rotation);
+        if (steps % 2 == 0)
+        {
+            pos = new Vector3(transform.position.x, 0.01f, transform.position.z - 0.05f);
+            print = Instantiate(footprint_l, pos, transform.rotation);
         }
-        else {
-          pos = new Vector3(transform.position.x,0.01f,transform.position.z+0.05f);
-          print = Instantiate(footprint_r,pos,transform.rotation);
+        else
+        {
+            pos = new Vector3(transform.position.x, 0.01f, transform.position.z + 0.05f);
+            print = Instantiate(footprint_r, pos, transform.rotation);
         }
 
-        if(lookingLeft) {
-          print.transform.Rotate(Vector3.up,-90);
+        if (lookingLeft)
+        {
+            print.transform.Rotate(Vector3.up, -90);
         }
-        else {
-          print.transform.Rotate(Vector3.up,90);
+        else
+        {
+            print.transform.Rotate(Vector3.up, 90);
         }
+
         audio.Play();
     }
 }
