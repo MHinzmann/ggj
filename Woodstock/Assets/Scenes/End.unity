@@ -363,7 +363,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Global Gamejam 2019 \n\nMirko\nFelix\nRobert \nJasmin\n"
+  m_Text: "Global Gamejam 2019 \n\nMirco\nFelix\nRobert \nJasmin\n"
 --- !u!222 &951630361
 CanvasRenderer:
   m_ObjectHideFlags: 0
