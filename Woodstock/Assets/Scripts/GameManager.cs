@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         if (_playerCaught && !gameOverSound.isPlaying)
         {
-            SceneManager.LoadScene("End");
+            SceneManager.LoadScene("StoryEnd");
         }
     }
 

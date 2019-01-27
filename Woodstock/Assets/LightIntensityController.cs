@@ -10,23 +10,23 @@ public class LightIntensityController : MonoBehaviour
 
     private Fireplace _fireplace;
 
-    void Start()
-    {
+    void Start() {
         light = GetComponentInChildren<Light>();
         initIntensity = light.intensity;
 
         GameObject fireplace = GameObject.Find("Fireplace");
-        fireplace.GetComponent<Fireplace>();
+        _fireplace = fireplace.GetComponent<Fireplace>();
     }
 
-    void Update()
-    {
-        if (_fireplace == null)
-        {
-            return;
+    void Update() {
+
+        if (_fireplace == null) {
+            strengthPercent = 0;
+        }
+        else {
+          strengthPercent = 100 / _fireplace.initialTimeLeft * _fireplace._remainingTime;
         }
 
-        strengthPercent = 100 / _fireplace.initialTimeLeft * _fireplace._remainingTime;
         float newIntensity = initIntensity / 100 * strengthPercent;
         light.intensity = newIntensity;
     }
