@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         if (_playerCaught)
             return;
-        
+
         character.GetComponent<PlayerMovement>().Immobilize();
         _playerCaught = true;
         gameOverSound.Play();
@@ -64,5 +64,10 @@ public class GameManager : MonoBehaviour
     public void AddScore(int s)
     {
         score += s;
+        GameObject.Find("ScoreHolder").GetComponent<ScoreHolder>().score = score;
+    }
+
+    public int GetScore() {
+      return score;
     }
 }

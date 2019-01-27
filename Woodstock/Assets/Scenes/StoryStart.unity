@@ -454,10 +454,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hello Jack,\n\nIts time again. The night comes...\n\nIts cold and its dark
+  m_Text: "Hello Jack,\n\nIts time again. The night comes...\nIts cold and its dark
     outside, but it can't be so hard to gather some wood and keep your family warm
     and cozy, can it?\nJust some seconds out there - grab yourself a bunch and keep
-    the cold away from your home. \n\nWill your sacrifice save your \"family\"? Will
+    the cold away from your home. \nWill your sacrifice save your \"family\"? Will
     you be able to protect your \"home\" from the reality that haunts you?\n\nHow
     long can you prevent what already happened?\n"
 --- !u!222 &334866314
