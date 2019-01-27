@@ -1,11 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class Ghost : MonoBehaviour
 {
     public float speed = 2f;
-    public float hideDistance = 20;
+    public float hideDistance = 5;
+    public float hauntTime = 5;
 
     public UnityEvent onPlayerCaught = new UnityEvent();
 
@@ -17,6 +19,8 @@ public class Ghost : MonoBehaviour
     private SafeZone _safeZone;
 
     private bool playerCaught;
+
+    private float _timePassed;
 
     private void Start()
     {
@@ -43,18 +47,36 @@ public class Ghost : MonoBehaviour
             return;
         }
 
+        _timePassed += Time.deltaTime;
         if (_safeZone.IsInSafeZone())
+        {
+            _timePassed = hauntTime;
+        }
+
+        if (_timePassed >= hauntTime)
+        {
+            RunAway();
             if (FarEnoughAway())
-                Idle();
-            else
-                RunAway();
+            {
+                if (_safeZone.IsInSafeZone())
+                {
+                    Idle();
+                }
+                else
+                {
+                    Teleport();
+                }
+            }
+        }
         else
+        {
             FollowTarget();
+        }
     }
 
     private bool FarEnoughAway()
     {
-        return (target.transform.position - transform.position).sqrMagnitude > hideDistance * hideDistance;
+        return (target.transform.position - transform.position).magnitude > hideDistance;
     }
 
     public void RunAway()
@@ -65,6 +87,16 @@ public class Ghost : MonoBehaviour
     private void Idle()
     {
         _rigidbody.velocity = Vector3.zero;
+    }
+
+    private void Teleport()
+    {
+        var x = Random.Range(-1f, 1f);
+        var z = Random.Range(-1f, 1f);
+        var randomDirection = new Vector3(x, 0, z).normalized;
+        var spawnPoint = target.transform.position + (randomDirection * hideDistance);
+        transform.position = spawnPoint;
+        _timePassed = 0;
     }
 
     private void FollowTarget()

@@ -5,21 +5,36 @@ public class GhostSpawner : MonoBehaviour
 {
     public UnityEvent onPlayerCaught = new UnityEvent();
 
+    public float spawnGhostEvery = 30;
+    
     public GameObject haunted;
     public GameObject ghostPrefab;
 
     public int spawnDistance = 10;
 
+    private float _timePassed = 0;
+    
     private void Start()
     {
         SpawnGhost();
     }
 
+    private void Update()
+    {
+        _timePassed += Time.deltaTime;
+
+        if (_timePassed > spawnGhostEvery)
+        {
+            SpawnGhost();
+            _timePassed = 0f;
+        }
+    }
+
     public void SpawnFireOutGhosts()
     {
-        SpawnGhost().speed = 4;
-        SpawnGhost().speed = 4;
-        SpawnGhost().speed = 4;
+        SpawnGhost();
+        SpawnGhost();
+        SpawnGhost();
     }
 
     public Ghost SpawnGhost()
