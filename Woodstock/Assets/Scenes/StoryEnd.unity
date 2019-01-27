@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -207,16 +207,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153383950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 354278385}
-  m_RootOrder: 1
+  m_Father: {fileID: 635584827}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 367.2, y: 322}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 266.15, y: -193}
   m_SizeDelta: {x: 532.3, y: 139.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153383952
@@ -378,7 +378,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 635584827}
-  - {fileID: 153383951}
   - {fileID: 2111693694}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -416,7 +415,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 153383951}
   m_Father: {fileID: 354278385}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -777,6 +777,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 274814542834086068, guid: eb7142607328c466e9b6d8f797b024e3,
+        type: 3}
+      propertyPath: m_Name
+      value: Kid2
+      objectReference: {fileID: 0}
     - target: {fileID: 8743093239859247776, guid: eb7142607328c466e9b6d8f797b024e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -846,11 +851,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.7896
-      objectReference: {fileID: 0}
-    - target: {fileID: 274814542834086068, guid: eb7142607328c466e9b6d8f797b024e3,
-        type: 3}
-      propertyPath: m_Name
-      value: Kid2
       objectReference: {fileID: 0}
     - target: {fileID: 1016902177707045978, guid: eb7142607328c466e9b6d8f797b024e3,
         type: 3}
@@ -944,12 +944,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 354278385}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 367.2, y: 129}
-  m_SizeDelta: {x: 532.3, y: 139.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -297, y: 38}
+  m_SizeDelta: {x: 532.30005, y: 139.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2111693695
 MonoBehaviour:
@@ -978,7 +978,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
