@@ -17,12 +17,12 @@ public class GhostSpawner : MonoBehaviour
 
     public void SpawnFireOutGhosts()
     {
-        SpawnGhost();
-        SpawnGhost();
-        SpawnGhost();
+        SpawnGhost().speed = 4;
+        SpawnGhost().speed = 4;
+        SpawnGhost().speed = 4;
     }
 
-    public void SpawnGhost()
+    public Ghost SpawnGhost()
     {
         var x = Random.Range(-1f, 1f);
         var z = Random.Range(-1f, 1f);
@@ -31,6 +31,8 @@ public class GhostSpawner : MonoBehaviour
         Debug.Log("Spawn Ghost at " + spawnPoint);
 
         var ghost = Instantiate(ghostPrefab, spawnPoint, Quaternion.identity);
-        ghost.GetComponent<Ghost>().onPlayerCaught = onPlayerCaught;
+        var ghostComp = ghost.GetComponent<Ghost>();
+        ghostComp.onPlayerCaught = onPlayerCaught;
+        return ghostComp;
     }
 }

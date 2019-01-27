@@ -44,20 +44,12 @@ public class Ghost : MonoBehaviour
         }
 
         if (_safeZone.IsInSafeZone())
-        {
             if (FarEnoughAway())
-            {
                 Idle();
-            }
             else
-            {
                 RunAway();
-            }
-        }
         else
-        {
             FollowTarget();
-        }
     }
 
     private bool FarEnoughAway()
