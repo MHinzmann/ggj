@@ -48,7 +48,8 @@ public class Ghost : MonoBehaviour
         }
 
         _timePassed += Time.deltaTime;
-        if (_safeZone.IsInSafeZone())
+        
+        if (_safeZone.IsInSafeZone() || _safeZone.IsInSafeZone(transform.position))
         {
             _timePassed = hauntTime;
         }
