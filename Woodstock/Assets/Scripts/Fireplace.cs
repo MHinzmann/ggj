@@ -5,28 +5,19 @@ public class Fireplace : MonoBehaviour
 {
     public UnityEvent onFireFed = new UnityEvent();
 
-    private enum FireState
-    {
-        Out,
-        Small,
-        Medium,
-        Big
-    }
-
     public UnityEvent onFireBurntOut = new UnityEvent();
 
     public float initialTimeLeft = 50;
     public float timePerFuelValue = 10;
 
-    public float thresholdNormalFlame = 60;
-    public float thresholdSmallFlame = 30;
+    public float bigFireValue = 50;
 
     public float _remainingTime;
+    private bool isOut;
 
     public GameObject fire;
 
     public Light light;
-    private FireState fireState;
 
     private void Awake()
     {
@@ -36,7 +27,7 @@ public class Fireplace : MonoBehaviour
 
     public void Feed(IFuel fuel)
     {
-        if (fireState == FireState.Out)
+        if (_remainingTime <= 0)
             return;
 
         _remainingTime += timePerFuelValue * fuel.GetFuelValue();
@@ -52,65 +43,24 @@ public class Fireplace : MonoBehaviour
 
     private void UpdateFireState()
     {
-        if (_remainingTime <= 0)
+        if (_remainingTime <= 0 && !isOut)
         {
-            if (fireState == FireState.Out) return;
             Debug.Log("Flame is out");
-
-            fireState = FireState.Out;
+            isOut = true;
 
             Destroy(fire);
             light.intensity = 0;
 
             onFireBurntOut.Invoke();
         }
-        else if (_remainingTime <= thresholdSmallFlame)
+        else if (_remainingTime > 0)
         {
-            if (fireState == FireState.Small) return;
-            SwitchToSmallFlame();
+            var fullSize = new Vector3(0.7f, 1.5f, 1);
+            var fireFullness = Mathf.Min(_remainingTime / bigFireValue, 1f);
+
+            fire.transform.localScale = fullSize * fireFullness;
+            fire.GetComponent<AudioSource>().volume = fireFullness;
+            light.intensity = fireFullness;
         }
-        else if (_remainingTime <= thresholdNormalFlame)
-        {
-            if (fireState == FireState.Medium) return;
-            SwitchToMediumFlame();
-        }
-        else if (_remainingTime > thresholdNormalFlame)
-        {
-            if (fireState == FireState.Big) return;
-            SwitchToBigFlame();
-        }
-    }
-
-    private void SwitchToBigFlame()
-    {
-        Debug.Log("Flame is big");
-
-        fireState = FireState.Big;
-        fire.transform.localScale = new Vector3(0.7f, 1.5f, 1);
-        fire.GetComponent<AudioSource>().volume = 1f;
-
-        light.intensity = 1;
-    }
-
-    private void SwitchToMediumFlame()
-    {
-        Debug.Log("Flame is medium");
-
-        fireState = FireState.Medium;
-        fire.transform.localScale = new Vector3(0.7f, 1, 1);
-        fire.GetComponent<AudioSource>().volume = 0.66f;
-
-        light.intensity = 0.66f;
-    }
-
-    private void SwitchToSmallFlame()
-    {
-        Debug.Log("Flame is small");
-
-        fireState = FireState.Small;
-        fire.transform.localScale = new Vector3(0.66f, 0.66f, 1);
-        fire.GetComponent<AudioSource>().volume = 0.33f;
-
-        light.intensity = 0.33f;
     }
 }
