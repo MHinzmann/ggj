@@ -609,7 +609,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1932,6 +1932,11 @@ PrefabInstance:
     - target: {fileID: 5167326645715463346, guid: f061a35400040c8499b0def5f5baa5d3,
         type: 3}
       propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167326645715463346, guid: f061a35400040c8499b0def5f5baa5d3,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4575162508290090821, guid: f061a35400040c8499b0def5f5baa5d3,

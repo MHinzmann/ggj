@@ -226,7 +226,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -363,6 +363,9 @@ MonoBehaviour:
   stepLength: 0.25
   stepHeight: 0.1
   lamp: {fileID: 0}
+  footprint_l: {fileID: 0}
+  footprint_r: {fileID: 0}
+  audio: {fileID: 0}
 --- !u!114 &1606698155065710109
 MonoBehaviour:
   m_ObjectHideFlags: 0
