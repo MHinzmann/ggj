@@ -11,6 +11,11 @@ public class SafeZone : MonoBehaviour
         return !fireBurntOut && transform.position.sqrMagnitude < safeRadius * safeRadius;
     }
 
+    public bool IsInSafeZone(Vector3 pos)
+    {
+        return !fireBurntOut && pos.sqrMagnitude < safeRadius * safeRadius;
+    }
+    
     public void OnFireBurntOut()
     {
         fireBurntOut = true;

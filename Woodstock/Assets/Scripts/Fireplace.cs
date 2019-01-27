@@ -10,7 +10,7 @@ public class Fireplace : MonoBehaviour
     public float initialTimeLeft = 50;
     public float timePerFuelValue = 10;
 
-    public float bigFireValue = 50;
+    public float bigFireValue = 60;
 
     public float _remainingTime;
     private bool isOut;
@@ -31,6 +31,8 @@ public class Fireplace : MonoBehaviour
             return;
 
         _remainingTime += timePerFuelValue * fuel.GetFuelValue();
+        _remainingTime = Mathf.Min(_remainingTime, bigFireValue);
+
         onFireFed.Invoke();
     }
 
