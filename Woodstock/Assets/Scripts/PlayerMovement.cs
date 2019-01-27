@@ -44,7 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        _rigidbody.velocity = new Vector3(speed * horizontal, 0, speed * vertical);
+        var direction = new Vector3(horizontal, 0, vertical).normalized;
+        _rigidbody.velocity = direction * speed;
 
         var moveDistance = _rigidbody.velocity.magnitude;
         stepProgress += moveDistance * Time.deltaTime;

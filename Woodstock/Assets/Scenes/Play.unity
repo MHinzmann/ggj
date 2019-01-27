@@ -283,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 8348002473514189403, guid: 8129ba0e69146c845be5c50491683f26,
         type: 3}
       propertyPath: timePerFuelValue
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4345167746280274138, guid: 8129ba0e69146c845be5c50491683f26,
         type: 3}
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearRadius: 5
   treeDistance: 4
-  logDistance: 8
+  logDistance: 9
   treePrefabs:
   - {fileID: 6685411220225741333, guid: 97235e5c4147376498bfe46406618817, type: 3}
   - {fileID: 7657820546061674494, guid: 470f3c5595ace449e903ee52e7d0b3a9, type: 3}
