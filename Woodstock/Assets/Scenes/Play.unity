@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -88,7 +88,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b433349a8ed9046b4a757863469b375f,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -137,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 4963118498460999504, guid: 8129ba0e69146c845be5c50491683f26,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.24
+      value: 1.29
       objectReference: {fileID: 0}
     - target: {fileID: 4963118498460999504, guid: 8129ba0e69146c845be5c50491683f26,
         type: 3}
@@ -182,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 8348002473514189403, guid: 8129ba0e69146c845be5c50491683f26,
         type: 3}
       propertyPath: onFireBurntOut.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8348002473514189403, guid: 8129ba0e69146c845be5c50491683f26,
         type: 3}
@@ -1293,9 +1294,9 @@ HingeJoint:
   m_GameObject: {fileID: 1693569247}
   m_ConnectedBody: {fileID: 1700069222}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 1, z: 1}
+  m_Axis: {x: 1, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.016619656, y: 2.6880553, z: 0.5101526}
+  m_ConnectedAnchor: {x: -0.016619656, y: 0.89601827, z: 0.021677911}
   m_UseSpring: 1
   m_Spring:
     spring: 2
@@ -1421,7 +1422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700069220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.076, y: 0.157, z: 0.24}
+  m_LocalPosition: {x: 0.1293, y: 0.128, z: 0.24}
   m_LocalScale: {x: 0.13839, y: 0.13839, z: 0.13839}
   m_Children:
   - {fileID: 1123391992}
@@ -1616,17 +1617,17 @@ PrefabInstance:
     - target: {fileID: 8576109644008343483, guid: f061a35400040c8499b0def5f5baa5d3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.529
+      value: 0.25199997
       objectReference: {fileID: 0}
     - target: {fileID: 8576109644008343483, guid: f061a35400040c8499b0def5f5baa5d3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0737
+      value: 0.127
       objectReference: {fileID: 0}
     - target: {fileID: 8576109644008343483, guid: f061a35400040c8499b0def5f5baa5d3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3106
+      value: 0.243
       objectReference: {fileID: 0}
     - target: {fileID: 8576109644008343483, guid: f061a35400040c8499b0def5f5baa5d3,
         type: 3}
