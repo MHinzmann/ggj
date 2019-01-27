@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb934b5b7a65e44fbf420fe8595efab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onCollect:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   inventory: {fileID: 1606698155065710109}
   suckSpeed: 5
   collectionRange: 0.5
@@ -70,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7042888027751290293}
-  - component: {fileID: 7360158460847762756}
+  - component: {fileID: 816231422880997974}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -86,14 +91,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3482928487076545141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.208}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8117643548368527988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &7360158460847762756
-CapsuleCollider:
+--- !u!65 &816231422880997974
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,10 +107,9 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 5970c7200f4f6f141908729ab14b7e2f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.282485
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.21751499}
+  serializedVersion: 2
+  m_Size: {x: 0.6077229, y: 1, z: 0.2397013}
+  m_Center: {x: -0.022135317, y: 0, z: 0.01605846}
 --- !u!1 &3876989868378397873
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20d2b05d34c48d4a3cdeea713a9ab9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 1606698155065710109}
+  inventory: {fileID: 0}
+  firePlaceScore: 50
 --- !u!135 &6745023234726177390
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -355,6 +360,7 @@ MonoBehaviour:
   speed: 3
   stepLength: 0.25
   stepHeight: 0.1
+  lamp: {fileID: 0}
 --- !u!114 &1606698155065710109
 MonoBehaviour:
   m_ObjectHideFlags: 0
