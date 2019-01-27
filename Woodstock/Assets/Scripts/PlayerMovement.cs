@@ -11,18 +11,22 @@ public class PlayerMovement : MonoBehaviour
     public float stepHeight = 0.1f;
 
     public GameObject lamp;
-
+    public GameObject footprint_l, footprint_r;
+    public AudioSource audio;
     private Rigidbody _rigidbody;
     private MeshRenderer _renderer;
 
     private float stepProgress;
 
-    private bool immobilized;
+    private bool immobilized, lookingLeft;
+
+    private int steps = 0;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _renderer = GetComponentInChildren<MeshRenderer>();
+        onStepTaken.AddListener(PlaceSteps);
     }
 
     public void Immobilize()
@@ -55,20 +59,42 @@ public class PlayerMovement : MonoBehaviour
                 onStepTaken.Invoke();
             }
         }
-
-
         if (horizontal > 0)
         {
+            lookingLeft = false;
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             lamp.transform.localScale = new Vector3(Mathf.Abs(lamp.transform.localScale.x), lamp.transform.localScale.y,
                 lamp.transform.localScale.z); //_renderer.material.SetTextureScale("_MainTex", new Vector2(1, 1));
         }
         else if (horizontal < 0)
         {
+            lookingLeft = true;
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             lamp.transform.localScale = new Vector3(-Mathf.Abs(lamp.transform.localScale.x),
                 lamp.transform.localScale.y, lamp.transform.localScale.z);
             //_renderer.material.SetTextureScale("_MainTex", new Vector2(-1, 1));
         }
+    }
+
+    void PlaceSteps() {
+      Vector3 pos;
+      GameObject print;
+        steps++;
+        if(steps%2 == 0) {
+          pos = new Vector3(transform.position.x,0.01f,transform.position.z-0.05f);
+          print = Instantiate(footprint_l,pos,transform.rotation);
+        }
+        else {
+          pos = new Vector3(transform.position.x,0.01f,transform.position.z+0.05f);
+          print = Instantiate(footprint_r,pos,transform.rotation);
+        }
+
+        if(lookingLeft) {
+          print.transform.Rotate(Vector3.up,-90);
+        }
+        else {
+          print.transform.Rotate(Vector3.up,90);
+        }
+        audio.Play();
     }
 }
